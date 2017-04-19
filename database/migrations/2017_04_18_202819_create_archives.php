@@ -15,7 +15,6 @@ class CreateArchives extends Migration
     {
         Schema::create('archives', function (Blueprint $table) {
             $table->increments('arch_id');
-            $table->integer('app_id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('gender');
@@ -33,8 +32,6 @@ class CreateArchives extends Migration
             $table->integer('gpa');
             $table->integer('graduation_year');
             $table->string('cv');
-//            $table->integer('eval_id');
-//            $table->increments('eval_id');
             $table->text('cv_notes');
             $table->boolean('cv_result');
             $table->integer('english');
@@ -44,6 +41,9 @@ class CreateArchives extends Migration
             $table->text('interview_notes');
             $table->boolean('interview_result');
             $table->integer('degree');
+            $table->text('offer');
+            $table->boolean('response');
+            $table->text('refuse');
             $table->integer('job_id')->unsigned();
             $table->foreign('job_id')->references('job_id')->on('jobs');
             $table->date('date');
