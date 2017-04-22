@@ -25,7 +25,7 @@ class CreateEvaluations extends Migration
             $table->boolean('interview_result');
             $table->integer('degree');
             $table->text('offer');
-            $table->boolean('response');
+            $table->integer('response');
             $table->text('refuse');
 
 
