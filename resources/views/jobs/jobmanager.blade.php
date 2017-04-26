@@ -1,4 +1,6 @@
+@extends('layouts.app')
 
+@section('content')
 
 <h1>Job Manager</h1>
 
@@ -9,7 +11,7 @@
     Description       : {{$job->description}}<br>
     Announcement Date : {{$job->announcement_date}}<br>
     Active(change it) :
-    <a href="{{"/jobs/disactivejob/".$job->job_id}}">
+    <a href="{{"/jobs/disactivejob/".$job->id}}">
         <input type="checkbox" name="active" checked="checked">
     </a><br>
     <a href="{{"/jobs/editjob/".$job->job_id}}">
@@ -24,3 +26,4 @@
 
 
 
+@endsection

@@ -1,0 +1,241 @@
+form{
+    position: relative;
+    text-align: left;
+    top:80px;
+
+}
+body{
+ background-image: url(../images/11.jpg);
+        background-position: 50% 50%;
+    background-size: cover;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+
+}
+
+.login,.SignUp{
+    color: aliceblue;
+    text-align: center;
+}
+#email {
+	color: aliceblue;
+    font-size: 20px;
+}
+#password{
+    color: aliceblue;
+        font-size: 20px;
+}
+.lead{
+    color: aliceblue;
+    text-align: center;
+        font-size: 20px;
+    margin-bottom: -15px;
+}
+.a11{
+    color: aliceblue;
+    text-decoration: none;
+    position: relative;
+    top: 150px;
+    text-align: center;
+    right: 20px;
+}
+.nationality{
+        color: aliceblue;
+        font-size: 20px;
+}
+.a2{
+    font-size: 30px;
+    text-decoration: none;
+    color: cornflowerblue;
+    font-weight: 700;
+}
+.head1{
+    text-align: center;
+    font-weight: bold;
+    background-color:gray;
+    padding-bottom:10px;
+    margin:auto;
+    margin-bottom: 20px;
+    color:white;
+    width:400px;
+}
+.points
+{
+    padding:30px;
+    background-color:brown;
+}
+.point1{
+    background-color:cornflowerblue;
+    padding-left:100px;
+    padding-right:100px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    margin:auto;
+    color: white;
+    font-size: 30px;
+}
+.point2{
+    
+    background-color:white;
+    padding:40px;
+    margin-bottom: 20px;
+}
+.point3{
+    font-size: 30px;
+    color:crimson;
+}
+.panel-default > .panel-heading{
+    font-size: 25px;
+    color:black;
+    background-color: gray;
+    
+}
+.p2{
+    color:white;
+    font-size:30px;
+}
+.thead1{
+    background-color:darkred;
+    color:white;
+}
+.listf{
+    font-size: 25px;
+    background-color:darkred;
+    color:white;
+}
+.pick
+{
+    color:black;
+    text-align: center;
+}
+.sas{
+    margin-left:200px;
+}
+.sss{
+    margin-right:300px;
+}
+.input
+{
+    width:60%;
+    height: 3%;
+}
+.input1
+{
+    width:60%;
+    height: 3%;
+    background-color:white;
+    color:black;
+}
+
+.label1
+
+{
+    color:black;
+    column-count: 40;
+    font-family:sans-serif;
+    font-size: 120%;
+}
+.ui
+{
+   padding: 40px;
+    margin-left: 450px;
+    margin-right: 450px;
+    margin-top: 0px;
+    width=60px;
+    /* background-image: url(../images/5.jpg);*/
+    background-color:white;
+
+}
+
+.ui2
+{
+   padding: 40px;
+    margin-left: 200px;
+    margin-right:200px;
+    margin-top: 0px;
+    width=60px;
+    /* background-image: url(../images/5.jpg);*/
+    background-color:white;
+
+}
+.ui1
+{
+   
+background-color: white;
+padding: 20px;    
+}
+.heading
+{
+    padding: 30px;
+    margin-left: 500px;
+    margin-right: 500px;
+    margin-bottom: 0px;
+    text-align: center;
+    color:white;
+/*background-image: url(../images/4.jpg);*/
+
+    font-family:serif;
+    font-size: 60px;
+}
+.submit
+{
+    width:80px;
+    
+    text-align: center;
+}
+label {
+    display: inline-block;
+    max-width: 100%;
+    margin-bottom: 5px;
+    font-weight: 700;
+    color:black;
+}
+.label2
+{
+    color:black;
+}
+.list-group-horizontal .list-group-item {
+    display: inline-block;
+}
+.list-group-horizontal .list-group-item {
+    margin-bottom: 0;
+    margin-left:0;
+    margin-right: 0;
+}
+.list-group-horizontal .list-group-item:first-child {
+    border-top-right-radius:0;
+    border-bottom-left-radius:20px;
+}
+.list-group-horizontal .list-group-item:last-child {
+    border-top-right-radius:20px;
+    border-bottom-left-radius:0;
+}
+
+element {
+}
+.panel-default > .panel-heading {
+    color: white;
+    background-color:cornflowerblue;
+    border-color: #ddd;
+}
+.panel-heading {
+    padding: 10px 15px;
+    border-bottom: 1px solid transparent;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+}
+
+
+element {
+}
+.table > tbody > tr > td, .table > tbody > tr > th, .table > tfoot > tr > td, .table > tfoot > tr > th, .table > thead > tr > td, .table > thead > tr > th {
+    padding: 8px;
+    line-height: 1.42857143;
+    vertical-align: top;
+    border-top: 1px solid #ddd;
+}
+td, th {
+    padding: 0;
+
+}
+

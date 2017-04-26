@@ -14,7 +14,7 @@ class CreateArchives extends Migration
     public function up()
     {
         Schema::create('archives', function (Blueprint $table) {
-            $table->increments('arch_id');
+            $table->increments('id');
             $table->string('first_name');
             $table->string('last_name');
             $table->string('gender');
@@ -45,7 +45,7 @@ class CreateArchives extends Migration
             $table->boolean('response');
             $table->text('refuse');
             $table->integer('job_id')->unsigned();
-            $table->foreign('job_id')->references('job_id')->on('jobs');
+            $table->foreign('job_id')->references('id')->on('jobs');
             $table->date('date');
             $table->timestamps();
         });

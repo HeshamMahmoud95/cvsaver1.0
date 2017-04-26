@@ -1,3 +1,7 @@
+@extends('layouts.app')
+
+@section('content')
+
 <h1>add new job</h1>
 
 
@@ -10,3 +14,5 @@ description<input type="text" name="description"><br>
 
 
 </form>
+
+    @endsection

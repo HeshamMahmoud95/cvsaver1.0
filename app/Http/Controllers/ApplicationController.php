@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 use App\Applicant;
 use App\Evaluation;
+use App\Job;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use File;
@@ -12,47 +13,58 @@ class ApplicationController extends Controller
     //
 
     public function newapplication(){
+        $jobs = Job::all();
+        $arr = array('jobs'=>$jobs);
 
-
-        return view('application.application');
+        return view('/ui/appform',$arr);
     }
 
 
     public  function applayrequenst(Request $request){
 
         $app = new Applicant();
-        $app->first_name=$request->input('first_name');
-        $app->last_name=$request->input('last_name');
-        $app->gender="male";//$request->
-        $app->nationality=$request->input('nationality');
-        $app->birth_date="1990-12-12";//$request->
-        $app->relagion=$request->input('relagion');
+        $app->first=$request->input('first_name');
+        $app->last=$request->input('last_name');
+        $app->gender=$request->input('gender');
+        $app->nation=$request->input('nationality');
+        $app->bod=$request->input('birth_date');
+        $app->religion=$request->input('religion');
         $app->phone=$request->input('phone');
         $app->email=$request->input('email');
         $app->address=$request->input('address');
-        $app->military="toto";//$request->
-        $app->years_experience=2;//$request->
-        $app->university="cairo";//$request->
-        $app->faculty="engineering";//$request->
-        $app->department="computer";//$request->
-        $app->gpa=50;//$request->
-        $app->graduation_year=2019;//$request->
+        $app->military=$request->input('military');
+        $app->yoe=2;//$request->input('experience_year');
+        $app->university=$request->input('university');
+        $app->faculty=$request->input('faculty');
+        $app->department=$request->input('department');
+        $app->gpa=$request->input('gpa');
+        $app->graduation_year=$request->input('graduation_year');
 
 
         $file=$request->file('upload_file');
-        $uniqueFileName ='new.pdf'; //=  $file->getClientOriginalName() ;
-        $file->move(storage_path('app') , $uniqueFileName);
+        $uniqueFileName ='new.pdf';
+
+
+      //  $file->move(storage_path('app') , $uniqueFileName);
 
         $app->cv=$uniqueFileName;
 
 
 
-        $app->eval_id=app('App\Http\Controllers\EvaluationController')->newevaluation();
-
         $app->save();
 
         $app_id=$app->id;
-        $job_id=$request->input('job_id');
+        $job = Job::where('name',$request->input('job'))->get()->first();
+
+
+       // $app = Applicant::where('app_id',$app_id)->get()->first();
+       // Evaluation::where('eval_id',$app->eval_id)
+       //     ->update(['offer'=>$request->input('add_offer')]);
+
+
+        $job_id=$job->id;
+
+
         app('App\Http\Controllers\ApplayController')->newapplay($app_id,$job_id);
 
 
@@ -76,7 +88,7 @@ class ApplicationController extends Controller
 
 
 
-        return view('application.thanks');
+        return view('/application/thanks');
     }
 
 
