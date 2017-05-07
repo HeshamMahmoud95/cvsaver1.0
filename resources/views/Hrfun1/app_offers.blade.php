@@ -55,9 +55,7 @@ Applicants with offers
                 <tr>
        <th>Applicant Name</th>
        <th>Job</th>
-       <th>Show Offer</th>
     <th>Edit Offer</th>
-    <th>Show response</th>
     <th>State of response </th>
     <th> Enter Reason of refuse </th>
     <th> View Reason of refuse </th>
@@ -68,52 +66,37 @@ Applicants with offers
                 <tr>
       <th>Applicant Name</th>
       <th>job</th>
-      <th>""</th>
-    <th>""</th>
-    <th>""</th>
-    <th>""</th>
-    <th>""</th>
-    <th>""</th>
+    <th>Edit Offer</th>
+    <th>State of response </th>
+    <th> Enter Reason of refuse </th>
+    <th> View Reason of refuse </th>
 
                 </tr>
                 </tfoot>
                 <tbody>
-
-
-
-
-
-                {{--_________________________________________________________--}}
-
-
-
-
-
-
-
-
-  @foreach($data as $row)
-
+                
+  @foreach($applicants as $app $jobs as $job)
+  $x=1;
    <tr>
-    <td>{{$row->first}} {{$row->last}}</td>
-    <td>{{$row->name}}</td>
-
-       {{--____________||||||||||||||||||||||||||||||||||||||______________________--}}
-
-
-       <form action="{{'/editoffer'.$row->id}}" method="post">
+    <td>$app->first_name $app->last_name</td>
+    <td>$job->job_name</td>
+     <form action="app_offers" method="POST">
 {{ csrf_field()}}
-           <td>
 
-<button type='button' class='btn btn-info' style="width:100%; height:40px; font-style: normal; font-size: medium;" data-toggle='collapse' data-target="#edit_offer{{$row->id}}">Edit offer</button>
-<div id="edit_offer{{$row->id}}" class='collapse'>
+<td>
+<?php
+$id=$app->id;
+$i=$id;
+echo"<button type='button' class='btn btn-info' data-toggle='collapse' data-target='#$i'>Click here to Edit offer</button>
+<div id='$i' class='collapse'>";
+?>
 
   <div class="ui1">
 
 <label for="offer">Edit Offer</label>
 
  <div class="form-group">
-    <textarea class="form-control"  name="{{'edit_offer_description'.$row->id}}">{{$row->offer}}</textarea>
+    <textarea class="form-control" name="edit_offer_description" placeholder="Write your offer"></textarea>
 </div>
 <br>
     <button type="submit" name="edit_offer" class="btn btn-default">Send</button>
@@ -121,128 +104,55 @@ Applicants with offers
 
   </div>
   </div>
-           </td>
-
+ </td>
 </form>
-
-       {{--____________||||||||||||||||||||||||||||||||||||||______________________--}}
-
-
-
-       <td>
-
-<button type='button' class='btn btn-info btn-lg' style="width:100%; height:40px; font-style: normal; font-size: medium;" data-toggle='modal' data-target="#show_offer{{$row->id}}">Show Offer</button>
-
-<div id="show_offer{{$row->id}}" class='modal fade' role='dialog'>
-
-
-<!-- Trigger the modal with a button -->
-
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss='{{"show offer".$row->id}}'>&times;</button>
-        <h4 class="modal-title">Sent Offer</h4>
-      </div>
-      <div class="modal-body">
-        <p>{{$row->offer}}</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
- 
- </td>
-
-
-<td>
-
-<button type='button' class='btn btn-info btn-lg' style="width:100%; height:40px; font-style: normal; font-size: medium;" data-toggle='modal' data-target='#show_response{{$row->id}}'>Show Response</button>
-
-<div id='show_response{{$row->id}}' class='modal fade' role='dialog'>
-
-
-<!-- Trigger the modal with a button -->
-
-  <div class="modal-dialog">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss='{{"show response".$row->id}}'>&times;</button>
-        <h4 class="modal-title">show response</h4>
-      </div>
-      <div class="modal-body">
-          <p>
-          @if($row->response==0)
-                NO RESPONSE
-          @elseif($row->response=='1')
-                OFFER ACCEPTED
-          @elseif($row->response==2)
-                OFFER REFUSED
-          @endif
-
-
-
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-      </div>
-    </div>
-
-  </div>
-</div>
- 
- </td>
-       {{--____________||||||||||||||||||||||||||||||||||||||______________________--}}
-
-       <form action="/edit_response{{$row->id}}" method="POST">
+ <form action="app_offers" method="POST">
 {{ csrf_field()}}
-<td>
-<button type='button' class='btn btn-info' style="width:100%; height:40px; font-style: normal; font-size: medium;" data-toggle='collapse' data-target='#enter_response{{$row->id}}'>Edit Response</button>
-<div id='enter_response{{$row->id}}' class='collapse'>
 
-  {{--<div class="ui1">--}}
+<td>
+<?php
+$id=$app->id;
+$i=($id+1000)*($x+1);
+echo"<button type='button' class='btn btn-info' data-toggle='collapse' data-target='#$i'>Click here to choose response </button>
+<div id='$i' class='collapse'>";
+?>
+
+  <div class="ui1">
  <div class="ui1">
 <label for="response">select response state</label>
-<select required="please enter respnse state" name="response_state{{$row->id}}">
-  <option selected="choose response" value="">choose response</option>
-  <option value="Accepted">Accepted</option>
-  <option value="Rejected">Rejected</option>
-  <option value="No response">No response</option>
+<select>
+  <option selected="choose response">choose response</option>
+  <option>Accepted</option>
+  <option>Rejected</option>
+  <option>No response</option>
 
 </select>
 <br>
 <br>
     <button type="submit" name="respons_state" class="btn btn-default">Send</button>
+
 <br>
-</div>
+
 </div>
  </td>
 </form>
-
-       {{--____________||||||||||||||||||||||||||||||||||||||______________________--}}
-
-       <form action="/edit_refuse/{{$row->id}}" method="POST" >
+ <form action="app_offers" method="POST">
 {{ csrf_field()}}
 
 <td>
-
-<button type='button' class='btn btn-info' style="width:100%; height:40px; font-style: normal; font-size: medium;"  data-toggle='collapse' data-target='#enter_refuse{{$row->id}}'>Enter Refuse</button>
-<div id='enter_refuse{{$row->id}}' class='collapse'>
+<?php
+$id=$app->id;
+$i=($id+1000)*($x+2);
+echo"<button type='button' class='btn btn-info' data-toggle='collapse' data-target='#$i'>Click here to Enter refuse reason</button>
+<div id='$i' class='collapse'>";
+?>
 
   <div class="ui1">
 
 <label for="refuse">Enter Refuse Reason</label>
 
  <div class="form-group">
-    <textarea class="form-control" name="refuse_reason{{$row->id}}" placeholder="Write reason"  required="plese enter reason"></textarea>
+    <textarea class="form-control" name="refuse_reason" placeholder="Write reason"></textarea>
 </div>
 <br>
     <button type="submit" name="refuse" class="btn btn-default">Send</button>
@@ -253,22 +163,13 @@ Applicants with offers
  </td>
 </form>
 
-
-
-       {{--____________||||||||||||||||||||||||||||||||||||||______________________--}}
-
-
-
-
-
-
-
-
  <td>
+<?php
+$id=$app->id;
+$i=($id+1000)*($x+3);
+echo"<button type='button' class='btn btn-info btn-lg' data-toggle='modal' data-target='#$i'>Click to show refuse reason</button>
 
-<button type='button' class='btn btn-info btn-lg' style="width:100%; height:40px; font-style: normal; font-size: medium;" data-toggle='modal' data-target='#show_refuse{{$row->id}}'>Show Refuse</button>
-
-<div id='show_refuse{{$row->id}}' class='modal fade' role='dialog'>";
+<div id='$i' class='modal fade' role='dialog'>";
 
 ?>
 <!-- Trigger the modal with a button -->
@@ -278,11 +179,11 @@ Applicants with offers
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" class="close" data-dismiss='{{"show refuse".$row->id}}'>&times;</button>
+        <button type="button" class="close" data-dismiss='$i'>&times;</button>
         <h4 class="modal-title">Refuse reason</h4>
       </div>
       <div class="modal-body">
-        <p>{{$row->refuse}}</p>
+        <p>Some text in the modal.</p>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -297,10 +198,6 @@ Applicants with offers
 
    </tr>
    @endforeach
-
-
-
-                {{--_____________________________________________________________--}}
 </tbody>
             </table>
         </div>
@@ -322,7 +219,7 @@ Applicants with offers
                 // Setup - add a text input to each footer cell
                 $('#example tfoot th').each( function () {
                     var title = $(this).text();
-                    $(this).html( '<input style=" width:60px"type="text" placeholder='+title+' />' );
+                    $(this).html( '<input style=" width:100px"type="text" placeholder='+title+' />' );
                 } );
 
                 // DataTable

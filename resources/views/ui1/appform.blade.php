@@ -47,47 +47,45 @@
             <div class="ui">
            <div class="form-group">
     <label for="first_name">First Name</label>
-    <input type="Name" class="form-control" id="exampleInputEmail1" name="first_name" placeholder="Enter your First name" required="please enter first name">
+    <input type="Name" class="form-control" id="exampleInputEmail1" name="first_name" placeholder="Enter your First name">
   </div>
    <div class="form-group">
     <label for="last_name">Last Name</label>
-    <input type="Name" class="form-control" id="exampleInputEmail1" name="last_name" placeholder="Enter your Last name" required="please enter last name">
+    <input type="Name" class="form-control" id="exampleInputEmail1" name="last_name" placeholder="Enter your Last name">
   </div>
                  <div class="form-group">
     <label for="">Email address</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email" required="please enter email">
+    <input type="email" class="form-control" id="exampleInputEmail1" name="email" placeholder="Email">
   </div>
 
                 <div class="form-group">
                     <label for="phone">Phone</label>
-                    <input type="Name" class="form-control" id="exampleInputEmail1" name="phone" placeholder="Enter your phone" required="please enter phone">
+                    <input type="Name" class="form-control" id="exampleInputEmail1" name="phone" placeholder="Enter your phone">
                 </div>
 
                 <div class="form-group">
                     <label for="address">Address</label>
-                    <input type="Name" class="form-control" id="exampleInputEmail1" name="address" placeholder="Enter your address" required="please enter address">
+                    <input type="Name" class="form-control" id="exampleInputEmail1" name="address" placeholder="Enter your address">
                 </div>
               <label class="label1" for="birthdate">Birth_Date</label>
          <label class="label2" for="birthdate">click to choose date</label>
-        <input type="text" id="datepicker" name="birth_date" required="please enter birth date">
+        <input type="text" id="datepicker" name="birth_date">
                 <br><br>
                        
                 
             <label class="label1" for="Gender">Gender</label>
-                <select name="gender" required="please choose gender">
-                <option value="" selected="choose gender">choose gender </option>
-                <option value="Male">Male</option>
-                <option value="Female">Female</option>
+                <select name="gender">
+                <option>Male</option>
+                <option>Female</option>
                 </select><br><br>
 
                <label class="label1" for="Religion">Religion</label>
-                <select name="religion" required="please enter religion">
-                <option value="" selected="choose religion">choose religion</option>
-                <option value="Muslim">Muslim</option>
-                <option value="Cristian">Cristian</option>
+                <select name="religion">
+                <option>Muslim</option>
+                <option>Cristian</option>
                 </select><br><br>
                  <label class="label1" for="nationality">Nationality</label>
-                 <select name="nationality" required="please enter nationality">
+                 <select name="nationality">
   <option value="">-- select one --</option>
   <option value="afghan">Afghan</option>
   <option value="albanian">Albanian</option>
@@ -285,59 +283,56 @@
                 <br><br>
                 <!--there we should iterate on jobs in database and active to show it for the applican-->
          <label class="label1" for="job">Jobs</label>
-                <select name="job" required="please enter job">
-                <option  value="" selected>choose your job</option>
+                <select name="job">
+                <option selected>choose your job</option>
             @foreach($jobs as $job)
-           <option value='$job->name'>{{$job->name}}</option>
+           <option>{{$job->name}}</option>
                     @endforeach
                 </select>
                 <br><br>
                   <div class="form-group">
     <label for="uni">University</label>
-    <input type="Name" class="form-control" id="exampleInputEmail1" name="university" placeholder="Enter your University" required="please enter university">
+    <input type="Name" class="form-control" id="exampleInputEmail1" name="university" placeholder="Enter your University">
   </div>
                  <div class="form-group">
     <label for="Faculty">Faculty</label>
-    <input type="Name" class="form-control" id="exampleInputEmail1" name="faculty" placeholder="Enter your Faculty" required="please enter faculty">
+    <input type="Name" class="form-control" id="exampleInputEmail1" name="faculty" placeholder="Enter your Faculty">
   </div>
                 <div class="form-group">
     <label for="DEP">Department</label>
-    <input type="Name" class="form-control" id="exampleInputEmail1" name="department" placeholder="Enter your Department" required="please enter department">
+    <input type="Name" class="form-control" id="exampleInputEmail1" name="department" placeholder="Enter your Department">
   </div>
                 <label class="label1" for="graduation">Graduation_Year</label>
-                <select name="graduation_year" required="please enter graduation_year">
-                 <option value="" selected>choose year</option>
+                <select name="graduation_year">
+                 <option selected>choose year</option>
 
 
                    @for( $i=1900;$i<2040;$i++)
                    {
-                       <option value='{{$i}}'> {{$i}} </option>
+                       <option> {{$i}} </option>
                    }
                   @endfor
 
                    </select> 
                 <br><br>
        <label class="label1" for="degree">Degree</label>
-            <select name="gpa" required="please enter gpa">
-            <option value="" selected="choose gpa">choose gpa</option>
-                <option value="Excellent">Excellent</option>
-                <option value="Very good">Very good</option>
-                <option value="Good">Good</option>
+            <select name="gpa">
+                <option>Excellent</option>
+                <option>Very good</option>
+                <option>Good</option>
             </select>
                 <br><br>
                 <label class="label1" for="experience">Experience_Years</label>
-            <select name="experience_year" required="please enter experience_year">
-                <option value="" selected="choose year">choose year</option>
-                <option value="1-3">1-3</option>
-                <option value="3-5">3-5</option>
-                <option value="above five">above five</option>
+            <select name="experience_year">
+                <option>1-3</option>
+                <option>3-5</option>
+                <option>above five</option>
             </select>
                 <label class="label1" for="military">Military_state</label>
-                <select name="military" required="please enter Military_state">
-                <option value="" selected="choose Military_state"> choose state</option>
-                <option value="Militray service done">Military service done</option>
-                <option value="Adjourned">Adjourned </option>
-                <option value="Final exception">Final exception</option>
+                <select name="military">
+                <option>Military service done</option>
+                <option>Adjourned </option>
+                <option>Final exception</option>
             </select>
                 <br><br>
 
@@ -346,7 +341,7 @@
      <label class="label1" for="UPload">Upload_CV</label>
   <input type="file" class="input1" name="CV">
    -->
-   Uplaod your CV :  <input name="upload_file" type="file" required="please Upload_CV" />
+   Uplaod your CV :  <input type="file" name="upload_file"  />
                 <br>
 
 

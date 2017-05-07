@@ -7,67 +7,140 @@ use App\Applicant;
 use App\Evaluation;
 use App\Job;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use League\Flysystem\Plugin\AbstractPlugin;
 
 class EvaluationController extends Controller
 {
-    //
-
+    //this function get the applicant and the job for every applicant who pass the all exams and
+    //ready to receive job offer
+    //and send them to the page which begin offers management
 
     public function get_app_offer(){
-        echo "haaaaaaaaaa";
-        $evals = Evaluation::where('interview_result',true)->get();
-            $applys =collect([]);
-            $apps=collect([]);
-            $jobs=collect([]);
-
-//            echo $evals;
-        foreach ($evals as $eval){
-            $apps->push(Applicant::where('id',$eval->app_id)->get());
 
 
-  //          echo "YES=YES=YES=YES=YES=YES";
-        }
-
-//        echo $apps;
-
-        foreach ($apps as $app){
-             // echo $app[0]->id;
-          $rr=  Applay::where('app_id',$app[0]->id)->get();
-//echo"&&&&&&&&&&&&&&&&&&";
-          foreach ($rr as $r) {
-  //        echo $r." ********************";
-              $ss = $r->job_id;
-              $jobs->push(Job::where('id',  $ss  )->get());
-          }
-
-
-        }
-    //    echo "_________________________________________________________________________________________________________________________________";
-        foreach ( $jobs as $job)
-        {echo $job."|_________ ____|";}
-
-
-
-
-
-
-
+        //this code in comments below has no importance
         /*
-        $applays = DB::table('applays')
-            ->join('', 'users.id', '=', 'contacts.user_id')
-            ->join('orders', 'users.id', '=', 'orders.user_id')
-            ->select('users.id', 'contacts.phone', 'orders.price')
-            ->get();
+        $applys =collect([]);
+        $apps=collect([]);
+        $jobs=collect([]);
+
+        //get all evaluations that pass interview stage
+        $evals = Evaluation::where('interview_result',true)->get();
+
+
+        //get all applicants who own the previous evaluations
+        foreach ($evals as $eval){
+            $apps->push(Applicant::where('id',$eval->app_id)->first());
+        }
+
+        //get the jobs of the previous applicants
+        foreach ($apps as $app){
+          $apply=  Applay::where('app_id',$app->id)->first();
+          $jobs->push(Job::where('id',  $apply->job_id  )->first());
+        }
+
+
+
+        $apps_arr=array('apps'=>$apps);
+
+
+                $jobs_arr=array('jobs'=>$jobs);
+
+        foreach ( $jobs as $job)
+        {
+            echo $job."|_________ ____|\n\n";}
+
+     //   return view('Hrfun/offers',);
+
+
+        echo "____________________________________________________________
+        __________________________________________________________________
+        ______________________________________________________________\n\n";
+
 
 */
 
-    echo "hooooo";
-        return view('application/thanks');
+        $tab = DB::table('evaluations')
+            ->join('applicants' , 'applicants.id' ,'=', 'evaluations.app_id')
+            ->join('applays' , 'applays.app_id' ,'=','applicants.id')
+            ->join('jobs' ,'jobs.id' ,'=','applays.job_id')
+            ->where('evaluations.interview_result' , '=' ,true)
+            ->select('applicants.first','applicants.last','jobs.name','evaluations.id')
+            ->get();
+
+        $arr=array('data'=>$tab);
+        return view('/Hrfun/offers',$arr);
+
+        //echo $tab;
+
 
     }
 
+    public  function sendoffer(Request $request , $eval_id){
+        //the offer from the request
+        $offerdata = $request->input('offer_description'.$eval_id);
 
+        DB::table('evaluations')
+            ->where('id',$eval_id)
+            ->update(['offer' => $offerdata]);
+
+       return $this->get_app_offer();
+    }
+
+    public function edit_offer_page(){
+
+
+
+        $tab = DB::table('evaluations')
+            ->join('applicants' , 'applicants.id' ,'=', 'evaluations.app_id')
+            ->join('applays' , 'applays.app_id' ,'=','applicants.id')
+            ->join('jobs' ,'jobs.id' ,'=','applays.job_id')
+            ->where('evaluations.interview_result' , '=' ,true)
+            ->select('applicants.first','applicants.last','jobs.name','evaluations.*')
+            ->get();
+
+        $arr=array('data'=>$tab);
+
+        return view('/Hrfun/app_offers',$arr);
+    }
+
+
+    public function edit_offer(Request $request ,$eval_id){
+
+        DB::table('evaluations')
+            ->where('id',$eval_id)
+            ->update(['offer' => $request->input('edit_offer_description'.$eval_id)]);
+
+        return $this->edit_offer_page();
+    }
+
+    public function edit_response(Request $request ,$eval_id){
+
+        if ($request->input('response_state'.$eval_id)=="Accepted")
+            $respo=1;
+        elseif($request->input('response_state'.$eval_id)=="Rejected")
+            $respo=2;
+        else
+            $respo=0;
+
+
+        DB::table('evaluations')
+            ->where('id',$eval_id)
+            ->update(['response' => $respo]);
+
+        return $this->edit_offer_page();
+
+    }
+
+    public function edit_refuse(Request $request ,$eval_id){
+
+        DB::table('evaluations')
+            ->where('id',$eval_id)
+            ->update(['refuse' => $request->input('refuse_reason'.$eval_id)]);
+
+        return $this->edit_offer_page();
+    }
 
 
 

@@ -65,7 +65,7 @@
                                                      document.getElementById('logout-form').submit();">
                                             Logout
                                         </a>
-                                        <a href="jobs/jobmanager/"
+                                        <a href="/Hrfun/jobsoptions"
                                           >
                                             Jobs Managment
                                         </a>

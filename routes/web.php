@@ -56,15 +56,14 @@ Route::get('/soso/koko','EvaluationController@get_app_offer');
 
 
 
-
- Route::get('/Hrfun/jobsoptions',"JobController@addjob");
+//routes for job managment
+Route::get('/Hrfun/jobsoptions',"JobController@addjob");
 Route::post('/Hrfun/jobsoptions',"JobController@addjob");
-
 Route::get('/Hrfun/jobsoptions2','JobController@hrdisplayjobs');
 Route::post('/Hrfun/jobsoptions2','JobController@hrdisplayjobs');
 
 
-
+//Route::get('/Hr')
 
 
 
@@ -74,6 +73,25 @@ Route::POST('/application/thanks','ApplicationController@applayrequenst');
 Route::get('/ui/appjobs',"JobController@displayjobs");
 Route::POST('/ui/appjobs',"JobController@displayjobs");
 Route::get('/ui/description/{id}',"JobController@getjob");
+
+
+
+//routes for offers
+
+Route::get('/offers','EvaluationController@get_app_offer');
+
+//Route::get('/send_offers{app_id}','EvaluationController@sendoffer');
+Route::POST('/send_offers/{app_id}','EvaluationController@sendoffer');
+
+//Route::get('/ribs','EvaluationController@get_app_offer');
+
+
+
+
+Route::get('/editoffer','EvaluationController@edit_offer_page');
+Route::post('/editoffer{eval_id}','EvaluationController@edit_offer');
+Route::post('/edit_response{eval_id}','EvaluationController@edit_response');
+Route::post('/edit_refuse/{eval_id}','EvaluationController@edit_refuse');
 
 
 

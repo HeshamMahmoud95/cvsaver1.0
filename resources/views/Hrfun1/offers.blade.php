@@ -2,9 +2,9 @@
 <html lang="en">
     <head>
  <link href='https://fonts.googleapis.com/css?family=Raleway:500italic,600italic,600,700,700italic,300italic,300,400,400italic,800,900' rel='stylesheet' type='text/css'>
-
+        
         <link href='https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,300,300italic,400italic,600italic,700,900' rel='stylesheet' type='text/css'>
-
+        
          <!-- Animate CSS -->
         <link rel="stylesheet"  href="{{ URL::asset('css/animate.css') }}">
         <!-- CSS -->
@@ -60,40 +60,40 @@ Applicants's Offers
                 <tr>
                     <th>name</th>
                     <th>Jop</th>
-
+                    
                 </tr>
                 </tfoot>
                 <tbody>
-                @foreach($data as $row)
-                    <tr>
-                        <td>{{$row->first}} {{$row->last}}</td>
-                    <td>{{$row->name}}</td>
-                    <form action="/send_offers/{{$row->id}}" method="POST">
-                    {{csrf_field()}}
+                @foreach($applicants as $app $jobs as $job)
+                <form action="offers" method="POST">
 
-
-
-
+                <tr>
+                    <td>$app->first_name $app->last_name</td>
+                    <td>$job->job_name</td>
                     <td>
-<button type="button" class="btn btn-info" data-toggle="collapse" data-target='#aa{{$row->id}}'>Click here to Send offer</button>
-<div id='aa{{$row->id}}' class="collapse">
+$id=->$app->id;
+<button type="button" class="btn btn-info" data-toggle="collapse" data-target='#$id'>Click here to Send offer</button>
+<div id='$id' class="collapse">
+
+
   <div class="ui1">
+
 <label for="offer">Offer</label>
+
  <div class="form-group">
-    <textarea class="form-control" name="offer_description{{$row->id}}" placeholder="Write your offer"></textarea>
+    <textarea class="form-control" name="offer_description" placeholder="Write your offer"></textarea>
 </div>
 <br>
-    <button type="submit" name="offerhere"  class="btn btn-default">Send</button>
+    <button type="submit" name="send_offer" class="btn btn-default">Send</button>
+    <br> 
 
-    <br>
   </div>
   </div>
  </td>
+                       
+                </tr>
+               </form>
 
-
-</form>
-                    </tr>
-@endforeach
                 </tbody>
             </table>
         </div>

@@ -66,19 +66,19 @@ body{
 }
 .point1{
     background-color:cornflowerblue;
-    padding-left:100px;
-    padding-right:100px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-left:20%;
+    padding-right:20%;
+    padding-top: 5%;
+    padding-bottom:5%;
     margin:auto;
     color: white;
-    font-size: 30px;
+    font-size:medium;
 }
 .point2{
-    
+
     background-color:white;
-    padding:40px;
-    margin-bottom: 20px;
+    padding:8%;
+    margin-bottom:4%;
 }
 .point3{
     font-size: 30px;
@@ -137,11 +137,12 @@ body{
 }
 .ui
 {
-   padding: 40px;
-    margin-left: 450px;
-    margin-right: 450px;
-    margin-top: 0px;
-    width=60px;
+   padding-bottom: 2%;
+    padding-left: 2%;
+    padding-right: 2%;
+    margin-left: 20%;
+    margin-right: 20%;
+    padding-top: 3%;
     /* background-image: url(../images/5.jpg);*/
     background-color:white;
 
@@ -153,7 +154,6 @@ body{
     margin-left: 200px;
     margin-right:200px;
     margin-top: 0px;
-    width=60px;
     /* background-image: url(../images/5.jpg);*/
     background-color:white;
 

@@ -49,14 +49,14 @@ Jobs Options
 
   <div class="form-group">
     <label for="jobname">Job Name</label>
-    <input type="Name" class="form-control" id="exampleInputEmail1" name="name" placeholder="Enter Job Name" required="please enter job name">
+    <input type="Name" class="form-control" id="exampleInputEmail1" name="name" placeholder="Enter Job Name">
   </div>
 
   <br>
 
 <label for="jobdescription">ADD Job description</label>
       <div class="form-group">
-    <textarea class="form-control" name="description" placeholder="Write description" required="please enter job description"></textarea>
+    <textarea class="form-control" name="description" placeholder="Write description"></textarea>
 </div>
 
 <br>
@@ -64,7 +64,7 @@ Jobs Options
 <label for="date of job">Date of anuouncement</label>
 <br>
          <label class="label2" for="job_date">click to choose date</label>
-        <input type="text" class="datepicker" name="announcement_date" required="please enter date" >
+        <input type="text" class="datepicker" name="announcement_date" >
                 
                    <br><br>
 
@@ -89,12 +89,12 @@ Jobs Options
   <div class="ui1">
 
  <label for="job_description_edit">Choose to Edit job</label>
-<select class="form-control" name="job_edit" required="please select job">
-<option value="" selected="Choose job">Choose job</option>
+<select class="form-control" name="job_edit">
+<option selected="Choose job">Choose job</option>
   
 
     @foreach($jobs as $job)
-        <option value='$job->name'>{{$job->name}}</option>
+        <option>{{$job->name}}</option>
     @endforeach
 
 </select>
